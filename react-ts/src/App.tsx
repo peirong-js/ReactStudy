@@ -5,6 +5,7 @@ import Store from "./useReducerTest/store";
 import Counter from "./useReducerTest/Counter";
 import List from "./useReducerTest/List";
 import Add from "./useReducerTest/Add";
+import { ProjectListScreen } from "./screens/projectaList";
 
 function App() {
   return (
@@ -15,6 +16,8 @@ function App() {
         <List />
         <Add />
       </Store>
+      <hr />
+      <ProjectListScreen />
       hello world
       {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
