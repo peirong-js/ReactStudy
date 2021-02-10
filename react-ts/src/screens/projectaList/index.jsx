@@ -1,11 +1,11 @@
-import { SearchPanel } from './searchPanel'
-import { List } from './list'
+import { SearchPanel } from "./searchPanel";
+import { List } from "./list";
 
 export const ProjectListScreen = () => {
-    return (
-        <div>
-            <List />
-            <SearchPanel />
-        </div>
-    )
-}
+  return (
+    <div>
+      <List />
+      <SearchPanel />
+    </div>
+  );
+};

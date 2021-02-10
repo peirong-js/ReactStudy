@@ -19,4 +19,5 @@ module.exports = {
     tabWidth: 4,
     //使用tab还是空格
     useTabs: false,
+    endOfLine: "auto"
 }

@@ -1,3 +1,3 @@
 export const SearchPanel = () => {
-    return <form action=""></form>
-}
+  return <form action=""></form>;
+};

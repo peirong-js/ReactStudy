@@ -1,3 +1,3 @@
 export const List = () => {
-    return <table></table>
-}
+  return <table></table>;
+};
