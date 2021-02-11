@@ -6,6 +6,7 @@ import Counter from "./useReducerTest/Counter";
 import List from "./useReducerTest/List";
 import Add from "./useReducerTest/Add";
 import { ProjectListScreen } from "./screens/projectaList";
+import { TsReactTest } from "./useArray/useArray";
 
 function App() {
   return (
@@ -18,7 +19,8 @@ function App() {
       </Store>
       <hr />
       <ProjectListScreen />
-      hello world
+      <hr />
+      <TsReactTest />
       {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
