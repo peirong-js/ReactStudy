@@ -7,6 +7,7 @@ import List from "./useReducerTest/List";
 import Add from "./useReducerTest/Add";
 import { ProjectListScreen } from "./screens/projectaList";
 import { TsReactTest } from "./useArray/useArray";
+import { LoginScreen } from "./screens/login";
 
 function App() {
   return (
@@ -21,6 +22,8 @@ function App() {
       <ProjectListScreen />
       <hr />
       <TsReactTest />
+      <hr />
+      <LoginScreen />
       {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
