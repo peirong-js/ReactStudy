@@ -8,22 +8,34 @@ import Add from "./useReducerTest/Add";
 import { ProjectListScreen } from "./screens/projectaList";
 import { TsReactTest } from "./useArray/useArray";
 import { LoginScreen } from "./screens/login";
+import { AuthenticatedApp } from "./authenticated-app";
+import { UnauthenticatedApp } from "./unauthenticated-app";
+import { useAuth } from "./context/auth-context";
 
 function App() {
+  const { user } = useAuth();
   return (
     <div className="App">
-      <Store>
-        <Counter />
-        <hr />
-        <List />
-        <Add />
-      </Store>
-      <hr />
-      <ProjectListScreen />
-      <hr />
-      <TsReactTest />
-      <hr />
-      <LoginScreen />
+      {user ? (
+        <div>
+          <AuthenticatedApp />
+          <Store>
+            <Counter />
+            <hr />
+            <List />
+            <Add />
+          </Store>
+          <hr />
+          <ProjectListScreen />
+          <hr />
+          <TsReactTest />
+          <hr />
+          <LoginScreen />
+        </div>
+      ) : (
+        <UnauthenticatedApp />
+      )}
+
       {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
