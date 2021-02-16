@@ -3,11 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@craco/craco": "^6.1.1",
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
     "@testing-library/user-event": "^12.6.3",
     "@types/jest": "^26.0.20",
     "@types/node": "^12.19.16",
+    "antd": "^4.12.3",
+    "craco-less": "^1.17.1",
     "jira-dev-tool": "^1.7.8",
     "qs": "^6.9.6",
     "react": "^17.0.1",
@@ -17,9 +20,9 @@
     "web-vitals": "^1.1.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "start": "craco start",
+    "build": "craco build",
+    "test": "craco test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

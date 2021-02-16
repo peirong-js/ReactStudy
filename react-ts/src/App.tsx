@@ -26,11 +26,11 @@ function App() {
             <Add />
           </Store>
           <hr />
-          <ProjectListScreen />
+          {/* <ProjectListScreen /> */}
           <hr />
           <TsReactTest />
           <hr />
-          <LoginScreen />
+          {/* <LoginScreen /> */}
         </div>
       ) : (
         <UnauthenticatedApp />

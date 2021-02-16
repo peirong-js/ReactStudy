@@ -29,7 +29,6 @@ export const useDebounce = <V>(value: V, delay?: number) => {
 };
 
 export const useArray = <T>(initArray: T[]) => {
-  // hello，请把作业写在这里吧，写完记得再对照作业要求检查一下
   const [value, setValue] = useState(initArray);
   return {
     value,
