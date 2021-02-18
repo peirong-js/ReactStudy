@@ -2,10 +2,16 @@ import { FormEvent } from "react";
 import { useAuth } from "../context/auth-context";
 import { Form, Input, Button } from "antd";
 import { LongButton } from "unauthenticated-app/index";
+import { useAsync } from "utils/use-async";
 
-export const LoginScreen = () => {
+export const LoginScreen = ({
+  onError,
+}: {
+  onError: (error: Error) => void;
+}) => {
   const apiUrl = process.env.REACT_APP_API_URL;
   const { login, user } = useAuth();
+  const { run, isLoading } = useAsync(undefined, { throwOnError: true });
   // const login = (param: { username: string; password: string }) => {
   //   fetch(`${apiUrl}/register`, {
   //     method: "POST",
@@ -27,8 +33,16 @@ export const LoginScreen = () => {
   //       .value;
   //     login({ username, password });
   //   };
-  const handleSubmit = (values: { username: string; password: string }) => {
-    login(values);
+  const handleSubmit = async (values: {
+    username: string;
+    password: string;
+  }) => {
+    try {
+      // await login(values);
+      await run(login(values));
+    } catch (e) {
+      onError(e);
+    }
   };
   return (
     <Form onFinish={handleSubmit}>
@@ -47,6 +61,7 @@ export const LoginScreen = () => {
       </Form.Item>
       <LongButton
         htmlType={"submit"}
+        loading={isLoading}
         type={"primary"}
         style={{ marginBottom: "10px" }}
       >
