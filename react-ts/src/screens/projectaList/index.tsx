@@ -10,6 +10,7 @@ import qs from "qs";
 import styled from "@emotion/styled";
 import { Typography } from "antd";
 import { Project } from "./list";
+import { useDocumentTitle } from "../../utils";
 
 const apiUrl = process.env.REACT_APP_API_URL;
 
@@ -17,6 +18,7 @@ export const ProjectListScreen = () => {
   // const [users, setUsers] = useState([]);
   // const [isLoading, setIsLoading] = useState(false);
   // const [error, setError] = useState<null | Error>(null);
+  useDocumentTitle("项目列表", false);
 
   const [params, setParams] = useState({
     name: "",
@@ -24,6 +26,13 @@ export const ProjectListScreen = () => {
   });
   // const [list, setList] = useState([]);
   const client = useHttp();
+
+  useEffect(() => {
+    console.log("before SearchChange");
+    return () => {
+      console.log("return search");
+    };
+  }, [params]);
 
   const debouncedParam = useDebounce(params, 200);
   const { isLoading, error, data: list } = useProjects(debouncedParam);
