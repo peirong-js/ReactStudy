@@ -11,6 +11,7 @@ import styled from "@emotion/styled";
 import { Typography } from "antd";
 import { Project } from "./list";
 import { useDocumentTitle } from "../../utils";
+import { useUrlQueryParam } from "../../utils/url";
 
 const apiUrl = process.env.REACT_APP_API_URL;
 
@@ -20,10 +21,17 @@ export const ProjectListScreen = () => {
   // const [error, setError] = useState<null | Error>(null);
   useDocumentTitle("项目列表", false);
 
-  const [params, setParams] = useState({
-    name: "",
-    personId: "",
-  });
+  // const [params, setParams] = useState({
+  //   name: "",
+  //   personId: "",
+  // });
+  // const [params, setParams] = useUrlQueryParam(["name", "personId"]);
+  // setParams({ name: "123" });
+  const [keys] = useState<("name" | "personId")[]>(["name", "personId"]);
+  let [params, setParams] = useUrlQueryParam(keys);
+  // setParams({ name: "骑手" });
+  console.log(params, "params");
+
   // const [list, setList] = useState([]);
   const client = useHttp();
 

@@ -19,6 +19,7 @@ interface SearchPanelProps {
 }
 
 export const SearchPanel = ({ users, params, setParams }: SearchPanelProps) => {
+  console.log(users, "users");
   // const [params, setParams] = useState({
   //   name: "",
   //   personId: "",
@@ -80,7 +81,7 @@ export const SearchPanel = ({ users, params, setParams }: SearchPanelProps) => {
         >
           <Select.Option value={""}>负责人</Select.Option>
           {users.map((user) => (
-            <Select.Option key={user.id} value={user.id}>
+            <Select.Option key={user.id} value={String(user.id)}>
               {user.name}
             </Select.Option>
           ))}
