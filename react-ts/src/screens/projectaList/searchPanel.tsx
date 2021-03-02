@@ -1,8 +1,10 @@
 /* @jsxImportSource @emotion/react */
 import { jsx } from "@emotion/react";
 import { Input, Select, Form } from "antd";
+import { UserSelect } from "components/user-select";
+import { Project } from "./list";
 export interface User {
-  id: string;
+  id: number;
   name: string;
   email: string;
   title: string;
@@ -11,10 +13,7 @@ export interface User {
 }
 interface SearchPanelProps {
   users: User[];
-  params: {
-    name: string;
-    personId: string;
-  };
+  params: Partial<Pick<Project, "name" | "personId">>;
   setParams: (params: SearchPanelProps["params"]) => void;
 }
 
@@ -75,7 +74,12 @@ export const SearchPanel = ({ users, params, setParams }: SearchPanelProps) => {
         />
       </Form.Item>
       <Form.Item>
-        <Select
+        <UserSelect
+          defaultOptionName={"负责人"}
+          value={params.personId}
+          onChange={(value) => setParams({ ...params, personId: value })}
+        ></UserSelect>
+        {/* <Select
           value={params.personId}
           onChange={(value) => setParams({ ...params, personId: value })}
         >
@@ -85,7 +89,7 @@ export const SearchPanel = ({ users, params, setParams }: SearchPanelProps) => {
               {user.name}
             </Select.Option>
           ))}
-        </Select>
+        </Select> */}
       </Form.Item>
     </Form>
   );

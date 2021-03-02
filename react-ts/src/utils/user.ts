@@ -7,6 +7,7 @@ import { cleanObj } from "utils/index";
 export const useUsers = (param?: Partial<User>) => {
   const client = useHttp();
   const { run, ...result } = useAsync<User[]>();
+  console.log(result.data);
 
   useEffect(() => {
     run(client("users", { data: cleanObj(param || {}) }));

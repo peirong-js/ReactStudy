@@ -12,6 +12,7 @@ import { Typography } from "antd";
 import { Project } from "./list";
 import { useDocumentTitle } from "../../utils";
 import { useUrlQueryParam } from "../../utils/url";
+import { useProjectsSearchParams } from "./util";
 
 const apiUrl = process.env.REACT_APP_API_URL;
 
@@ -27,8 +28,15 @@ export const ProjectListScreen = () => {
   // });
   // const [params, setParams] = useUrlQueryParam(["name", "personId"]);
   // setParams({ name: "123" });
-  const [keys] = useState<("name" | "personId")[]>(["name", "personId"]);
-  let [params, setParams] = useUrlQueryParam(keys);
+
+  // const [keys] = useState<("name" | "personId")[]>(["name", "personId"]);
+  // let [params, setParams] = useUrlQueryParam(keys);
+  // let projectsParam = {
+  //   ...params,
+  //   personId: Number(params.personId) || undefined,
+  // };
+  const [params, setParams] = useProjectsSearchParams();
+
   // setParams({ name: "骑手" });
   console.log(params, "params");
 
