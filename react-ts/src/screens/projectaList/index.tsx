@@ -8,7 +8,7 @@ import { useAsync } from "../../utils/use-async";
 import { cleanObj, useMount, useDebounce } from "../../utils";
 import qs from "qs";
 import styled from "@emotion/styled";
-import { Typography } from "antd";
+import { Typography, Button } from "antd";
 import { Project } from "./list";
 import { useDocumentTitle } from "../../utils";
 import { useUrlQueryParam } from "../../utils/url";
@@ -51,7 +51,7 @@ export const ProjectListScreen = () => {
   }, [params]);
 
   const debouncedParam = useDebounce(params, 200);
-  const { isLoading, error, data: list } = useProjects(debouncedParam);
+  const { isLoading, error, data: list, retry } = useProjects(debouncedParam);
   const { data: users } = useUsers();
   // useEffect(() => {
   //   run(client("projects", { data: cleanObj(debouncedParam) }));
@@ -84,11 +84,17 @@ export const ProjectListScreen = () => {
   return (
     <Container>
       <h1>项目列表</h1>
+      <Button onClick={retry}>retry</Button>
       <SearchPanel params={params} setParams={setParams} users={users || []} />
       {error ? (
         <Typography.Text type={"danger"}>{error.message}</Typography.Text>
       ) : null}
-      <List loading={isLoading} dataSource={list || []} users={users || []} />
+      <List
+        refresh={retry}
+        loading={isLoading}
+        dataSource={list || []}
+        users={users || []}
+      />
     </Container>
   );
 };
