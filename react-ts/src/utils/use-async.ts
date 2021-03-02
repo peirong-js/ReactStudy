@@ -77,8 +77,7 @@ export const useAsync = <D>(
     run,
     setData,
     setError,
-    // retry 被调用时重新跑一遍run, 刷新state
-    retry,
+    retry, // retry 被调用时重新跑一遍run, 刷新state
     ...state,
   };
 };
