@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useMountedRef } from "./index";
 
 interface State<D> {
   error: Error | null;
@@ -41,6 +42,8 @@ export const useAsync = <D>(
 
   const [retry, setRetry] = useState(() => () => {});
 
+  const mountedRef = useMountedRef();
+
   // run 用来触发异步请求
   const run = (
     promise: Promise<D>,
@@ -58,8 +61,7 @@ export const useAsync = <D>(
     setState({ ...state, stat: "loading" });
     return promise
       .then((data) => {
-        console.log(data);
-        setData(data);
+        if (mountedRef.current) setData(data);
         return data;
       })
       .catch((error) => {
