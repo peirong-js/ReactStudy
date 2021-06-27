@@ -17,7 +17,7 @@ import { Row } from "components/lib";
 
 const apiUrl = process.env.REACT_APP_API_URL;
 
-export const ProjectListScreen = () => {
+export const ProjectListScreen = (props: { projectButton: JSX.Element }) => {
   // const [users, setUsers] = useState([]);
   // const [isLoading, setIsLoading] = useState(false);
   // const [error, setError] = useState<null | Error>(null);
@@ -86,7 +86,7 @@ export const ProjectListScreen = () => {
     <Container>
       <Row between={true}>
         <h1>项目列表</h1>
-        <Button>创建项目</Button>
+        {props.projectButton}
       </Row>
       <Button onClick={retry}>retry</Button>
       <SearchPanel params={params} setParams={setParams} users={users || []} />
@@ -94,6 +94,7 @@ export const ProjectListScreen = () => {
         <Typography.Text type={"danger"}>{error.message}</Typography.Text>
       ) : null}
       <List
+        projectButton={props.projectButton}
         refresh={retry}
         loading={isLoading}
         dataSource={list || []}
